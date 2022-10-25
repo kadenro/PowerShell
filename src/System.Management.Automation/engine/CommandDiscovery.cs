@@ -1501,7 +1501,7 @@ namespace System.Management.Automation
 
         internal ExecutionContext Context { get; }
 
-        internal static PSModuleAutoLoadingPreference GetCommandDiscoveryPreference(ExecutionContext context, VariablePath variablePath, string environmentVariable)
+        internal static // hasAutoLoadingEnvVar ? use it : Default. Put this discussion in pr. Explain how your code change would change behavior. Tag people from original post + pwshll team discord GetCommandDiscoveryPreference(ExecutionContext context, VariablePath variablePath, string environmentVariable)
         {
             Dbg.Assert(context != null, "context cannot be Null");
             Dbg.Assert(variablePath != null, "variablePath must be non empty");

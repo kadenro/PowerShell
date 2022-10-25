@@ -4320,6 +4320,8 @@ end {
         internal const ActionPreference DefaultWarningPreference = ActionPreference.Continue;
         internal const ActionPreference DefaultInformationPreference = ActionPreference.SilentlyContinue;
 
+        internal const PSModuleAutoLoadingPreference DefaultAutoLoadingPreference = PSModuleAutoLoadingPreference.All;
+
         internal const ErrorView DefaultErrorView = ErrorView.ConciseView;
         internal const bool DefaultWhatIfPreference = false;
         internal const ConfirmImpact DefaultConfirmPreference = ConfirmImpact.High;
@@ -4420,6 +4422,15 @@ end {
                     FormatEnumerationLimit,
                     DefaultFormatEnumerationLimit,
                     RunspaceInit.FormatEnumerationLimitDescription),
+
+                // variable for PSModuleAutoLoadingPreference
+                new SessionStateVariableEntry(
+                   SpecialVariables.PSModuleAutoLoading,
+                   // hasAutoLoadingEnvVar ? use it : Default. Put this discussion in pr. Explain how your code change would change behavior. Tag people from original post + pwshll team discord
+                   DefaultAutoLoadingPreference, 
+                   RunspaceInit.PSModuleAutoLoadingPreferenceDescription,
+                   ScopedItemOptions.None,
+                   new ArgumentTypeConverterAttribute(typeof(PSModuleAutoLoadingPreference))),
 
                 // variable for PSEmailServer
                 new SessionStateVariableEntry(

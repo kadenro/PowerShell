@@ -262,6 +262,28 @@ Describe "Import-Module for Binary Modules" -Tags 'CI' {
     }
 }
 
+Describe "PSModuleAutoloadingPreference has correct default value and rejects bogus values" -Tags 'CI' {
+
+    It "Default value should be all" {
+        $PSModuleAutoloadingPreference | Should -Be "All"
+    }
+
+    It "Assign bogus value fails" {
+        {$PSModuleAutoloadingPreference = "bogus" } | Should -Throw -ErrorId "MetadataError"
+    }
+
+    It "Assign valid value succeeds" {
+        $PSModuleAutoloadingPreference = "None"
+        $PSModuleAutoloadingPreference | Should -Be "None"
+
+        $PSModuleAutoloadingPreference = "ModuleQualified"
+        $PSModuleAutoloadingPreference | Should -Be "ModuleQualified"
+
+        $PSModuleAutoloadingPreference = "All"
+        $PSModuleAutoloadingPreference | Should -Be "All"
+    }
+}
+
 Describe "Import-Module should be case insensitive" -Tags 'CI' {
     BeforeAll {
         $defaultPSModuleAutoloadingPreference = $PSModuleAutoLoadingPreference
