@@ -265,22 +265,22 @@ Describe "Import-Module for Binary Modules" -Tags 'CI' {
 Describe "PSModuleAutoloadingPreference has correct default value and rejects bogus values" -Tags 'CI' {
 
     It "Default value should be all" {
-        $PSModuleAutoloadingPreference | Should -Be "All"
+        $Global:PSModuleAutoloadingPreference | Should -Be "All"
     }
 
     It "Assign bogus value fails" {
-        {$PSModuleAutoloadingPreference = "bogus" } | Should -Throw -ErrorId "MetadataError"
+        {$Global:PSModuleAutoloadingPreference = "bogus" } | Should -Throw -ErrorId "RuntimeException"
     }
 
     It "Assign valid value succeeds" {
-        $PSModuleAutoloadingPreference = "None"
-        $PSModuleAutoloadingPreference | Should -Be "None"
+        $Global:PSModuleAutoloadingPreference = "None"
+        $Global:PSModuleAutoloadingPreference | Should -Be "None"
 
-        $PSModuleAutoloadingPreference = "ModuleQualified"
-        $PSModuleAutoloadingPreference | Should -Be "ModuleQualified"
+        $Global:PSModuleAutoloadingPreference = "ModuleQualified"
+        $Global:PSModuleAutoloadingPreference | Should -Be "ModuleQualified"
 
-        $PSModuleAutoloadingPreference = "All"
-        $PSModuleAutoloadingPreference | Should -Be "All"
+        $Global:PSModuleAutoloadingPreference = "All"
+        $Global:PSModuleAutoloadingPreference | Should -Be "All"
     }
 }
 
