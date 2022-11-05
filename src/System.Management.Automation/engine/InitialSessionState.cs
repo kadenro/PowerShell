@@ -4426,7 +4426,6 @@ end {
                 // variable for PSModuleAutoLoadingPreference
                 new SessionStateVariableEntry(
                    SpecialVariables.PSModuleAutoLoading,
-                   // hasAutoLoadingEnvVar ? use it : Default. Put this discussion in pr. Explain how your code change would change behavior. Tag people from original post + pwshll team discord
                    DefaultAutoLoadingPreference, 
                    RunspaceInit.PSModuleAutoLoadingPreferenceDescription,
                    ScopedItemOptions.None,
